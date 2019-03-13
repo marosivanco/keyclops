@@ -12,6 +12,10 @@
 	],
 	"author": "Maros Ivanco <maros.ivanco@gmail.com>",
 	"license": "Apache 2.0",
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/marosivanco/keyclops.git"
+	},
 	"scripts": {
 		"serve": "vue-cli-service serve",
 		"prebuild": "node ./node_modules/rimraf/bin.js ./node_modules/.cache",
