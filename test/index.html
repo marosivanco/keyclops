@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1, minimal-ui">
+		<title>Keyclops test</title>
+		<script>
+			<%const inline = htmlWebpackPlugin.options.inline;
+			for (var i = 0; i < inline.length; i++) {
+			%><%= inline[i] %><%
+				}%>
+		</script>
+	</head>
+	<body>
+		<div id="test"></div>
+	</body>
+</html>

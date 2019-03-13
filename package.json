@@ -1,0 +1,42 @@
+{
+	"name": "keyclops",
+	"version": "0.1.0",
+	"description": "Responsive JS client for Keycloak.",
+	"keywords": [
+		"authentication",
+		"keycloak",
+		"oauth",
+		"oauth2",
+		"oidc",
+		"sso"
+	],
+	"author": "Maros Ivanco <maros.ivanco@gmail.com>",
+	"license": "Apache 2.0",
+	"scripts": {
+		"serve": "vue-cli-service serve",
+		"prebuild": "node ./node_modules/rimraf/bin.js ./node_modules/.cache",
+		"build": "vue-cli-service build --modern",
+		"lint": "vue-cli-service lint"
+	},
+	"dependencies": {
+		"axios": "0.18.0"
+	},
+	"devDependencies": {
+		"@vue/cli-plugin-babel": "3.3.0",
+		"@vue/cli-plugin-eslint": "3.3.0",
+		"@vue/cli-service": "3.3.0",
+		"@vue/eslint-config-prettier": "4.0.1",
+		"compression-webpack-plugin": "2.0.0",
+		"core-js": "2.6.1",
+		"prettier": "1.15.3",
+		"rimraf": "2.6.2",
+		"uglify-es": "3.3.9",
+		"vue": "2.5.21",
+		"vue-template-compiler": "2.5.21",
+		"vuex": "3.0.1"
+	},
+	"engines": {
+		"node": ">= 10.0.0",
+		"npm": ">= 6.4.0"
+	}
+}

@@ -1,0 +1,9 @@
+api/
+build/
+config/
+static/
+test/
+
+# Editor directories and files
+.*
+*.config.js
