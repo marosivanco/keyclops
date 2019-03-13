@@ -1,4 +1,4 @@
-# <img alt="Logo" src="./doc/keyclops.svg#logo"> Keyclops JS
+# <img height="26px" src="./doc/keyclops.svg"> Keyclops JS
 
 Responsive javascript client for [Keycloak](https://www.keycloak.org/).
 
@@ -877,9 +877,3 @@ Even though you probably wouldn't recognize Keycloak JS when looking into Keyclo
 # 7. License
 
 [Apache License, Version 2.0](https://www.apache.org/licenses/LICENSE-2.0)
-
-<style>
-img[src *= "#logo"] {
-  height: .8em;
-}
-</style>
