@@ -1,4 +1,4 @@
-#![Logo](./doc/keyclops.svg#logo) Keyclops JS
+# ![Logo](./doc/keyclops.svg#logo) Keyclops JS
 
 Responsive javascript client for [Keycloak](https://www.keycloak.org/).
 
