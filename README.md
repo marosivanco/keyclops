@@ -98,6 +98,7 @@ The results in the terms of code size are summarized in the following table:
 | Minified+gzip | 6.3 kB      | 1.95 kB (1.28 + 0.67)<sup>1</sup> | **2.8 kB** (1.95 + 0.84)<sup>2</sup> |
 
 <sup>1</sup> Hybrid flow + bootstrap
+
 <sup>2</sup> Hybrid flow + bootstrap + app-specific code
 
 ## 2.1. Token update pattern
