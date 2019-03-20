@@ -91,14 +91,15 @@ Moreover, Keyclops changes fundamental concept of token update. It is also split
 
 The results in the terms of code size are summarized in the following table:
 
-| Size          | Keycloak JS | Keyclops                 | Keyclops + App-specific handling |
-| ------------- | ----------- | ------------------------ | -------------------------------- |
-| Source        | 59 kB       | 9.15 kB (7.7 + 1.6)^1^   | 11.65 kB (9.15 + 2.5)^2^         |
-| Minified      | 21 kB       | 6.44 kB (5.44 + 1.2)^1^  | 8 kB (6.44 + 1.6)^2^             |
-| Minified+gzip | 6.3 kB      | 1.95 kB (1.28 + 0.67)^1^ | **2.8 kB** (1.95 + 0.84)^2^      |
+| Size          | Keycloak JS | Keyclops                          | Keyclops + App-specific handling     |
+| ------------- | ----------- | --------------------------------- | ------------------------------------ |
+| Source        | 59 kB       | 9.15 kB (7.7 + 1.6)<sup>1</sup>   | 11.65 kB (9.15 + 2.5)<sup>2</sup>    |
+| Minified      | 21 kB       | 6.44 kB (5.44 + 1.2)<sup>1</sup>  | 8 kB (6.44 + 1.6)<sup>2</sup>        |
+| Minified+gzip | 6.3 kB      | 1.95 kB (1.28 + 0.67)<sup>1</sup> | **2.8 kB** (1.95 + 0.84)<sup>2</sup> |
 
-^1^ Hybrid flow + bootstrap
-^2^ Hybrid flow + bootstrap + app-specific code
+<sup>1</sup> Hybrid flow + bootstrap
+
+<sup>2</sup> Hybrid flow + bootstrap + app-specific code
 
 ## 2.1. Token update pattern
 
