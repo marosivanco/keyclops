@@ -6,8 +6,6 @@ module.exports = {
 	productionSourceMap: false,
 	devServer: {
 		port: 80,
-		//TODO:
-		allowedHosts: ["sales.dev.pbpartner.sk"],
 	},
 	chainWebpack: config => {
 		config.plugins.delete("prefetch");
