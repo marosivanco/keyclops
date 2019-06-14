@@ -47,7 +47,6 @@ Keyclops.prototype.createLoginUrl = function(redirectUrl, responseType) {
 	)}&scope=openid&nonce=${nonce}`;
 };
 Keyclops.prototype.createLogoutUrl = function(redirectUrl) {
-	sessionStorage.removeItem("kc");
 	const euc = encodeURIComponent;
 	return `${this.url}/realms/${euc(this.realm)}/protocol/openid-connect/logout?redirect_uri=${euc(redirectUrl)}`;
 };

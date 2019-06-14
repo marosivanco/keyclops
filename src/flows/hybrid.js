@@ -170,6 +170,7 @@ Keyclops.prototype.getOAuthParams = function(url) {
 	}
 	let oauthStateStored = JSON.parse(sessionStorage.getItem("kc"));
 	console.log("[KEYCLOPS] getOAuthParams stored oauthState", oauthStateStored);
+	sessionStorage.removeItem("kc");
 	const oauthStateParsed = parseOAuth(url);
 	if (!oauthStateStored) {
 		oauthStateStored = { redirectUrl: oauthStateParsed.newUrl };
