@@ -5,6 +5,7 @@ module.exports = {
 	parallel: true,
 	productionSourceMap: false,
 	devServer: {
+		allowedHosts: ["www.example.org"],
 		port: 80,
 	},
 	chainWebpack: config => {
