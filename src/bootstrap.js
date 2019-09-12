@@ -1,6 +1,4 @@
-console.log("[KEYCLOPS] bootstrap");
-
-function Keyclops({ url, realm, clientId, sso, checkNonce }) {
+function Keyclops({ url, realm, clientId, sso, checkNonce, logging }) {
 	if (!clientId) throw "clientId missing";
 	if (!realm) throw "realm missing";
 	if (!url) throw "url missing";
@@ -8,6 +6,7 @@ function Keyclops({ url, realm, clientId, sso, checkNonce }) {
 	this.url = url;
 	this.realm = realm;
 	this.clientId = clientId;
+	this.logging = logging;
 	// setupOidcEndpoints
 	const ppath = `${url}/realms/${encodeURIComponent(realm)}/protocol/openid-connect`;
 	this.endpoints = {

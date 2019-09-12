@@ -302,6 +302,7 @@ new Keyclops(options);
     - `interval` - if SSO is enabled, the interval in seconds at which the SSO occurrence is checked.
 
   - `checkNonce` - _Optional_. Default `false`. Whether to check that nonce in tokens equals to nonce used to start the authentication process. Setting this to `true` makes sense if you can ensure, that the authentication process _cannot_ be started outside of your application.
+  - `logging` - _Optional_. Default `false`. Wheter to log various messages to the console.
 
 **Example**
 

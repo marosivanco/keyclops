@@ -28,7 +28,7 @@
 			}
 			return `${protocol}//${parts.join(".")}/auth`;
 		}
-		const keyclops = new Keyclops({ url: providerUrl(), realm, clientId });
+		const keyclops = new Keyclops({ url: providerUrl(), realm, clientId, logging: true });
 		window.keyclops = keyclops;
 		function logout() {
 			setCookie("Access-Token", "", new Date(0));

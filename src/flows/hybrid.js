@@ -34,20 +34,25 @@ function decodePayload(token) {
 const euc = encodeURIComponent;
 
 const Keyclops = window.Keyclops;
+Keyclops.prototype.log = function(...args) {
+	if (this.logging) {
+		console.log(...args);
+	}
+};
 Keyclops.prototype.init = function(options) {
 	if (!options) throw new Error("init options parameter is mandatory.");
-	console.log("[KEYCLOPS] Implicit init params: flow = hybrid, responseMode = fragment, checkLoginIframe = true");
-	console.log("[KEYCLOPS] Explicit init params:", options);
+	this.log("[KEYCLOPS] Implicit init params: flow = hybrid, responseMode = fragment, checkLoginIframe = true");
+	this.log("[KEYCLOPS] Explicit init params:", options);
 
 	const oauth = this.getOAuthParams(location.href);
-	console.log("[KEYCLOPS] init oauth params:", JSON.stringify(oauth));
+	this.log("[KEYCLOPS] init oauth params:", JSON.stringify(oauth));
 	if (oauth.newUrl) {
-		console.log("[KEYCLOPS] history replaceState: ", oauth.newUrl);
+		this.log("[KEYCLOPS] history replaceState: ", oauth.newUrl);
 		window.history.replaceState({}, null, oauth.newUrl);
-		console.log("[KEYCLOPS] location: ", window.location);
+		this.log("[KEYCLOPS] location: ", window.location);
 	}
 	this.setupSSOIframe().catch(() => {
-		console.error("[KEYCLOPS] Unable to setup SSO iframe. ");
+		this.error("[KEYCLOPS] Unable to setup SSO iframe. ");
 	});
 	let ret;
 	if (oauth.continue) {
@@ -62,7 +67,7 @@ Keyclops.prototype.init = function(options) {
 };
 
 Keyclops.prototype.update = function() {
-	console.log("[KEYCLOPS] update");
+	this.log("[KEYCLOPS] update");
 	if (!this.refreshToken) return Promise.reject();
 
 	return fetch(this.endpoints.token, {
@@ -83,7 +88,7 @@ Keyclops.prototype.update = function() {
 			return data;
 		})
 		.catch(response => {
-			console.warn("[KEYCLOPS] Failed to refresh tokens.");
+			this.warn("[KEYCLOPS] Failed to refresh tokens.");
 			if (response.status === 400) {
 				this.clear();
 			}
@@ -92,7 +97,7 @@ Keyclops.prototype.update = function() {
 };
 
 Keyclops.prototype.clear = function() {
-	console.log("[KEYCLOPS] Clearing tokens.");
+	this.log("[KEYCLOPS] Clearing tokens.");
 	this.refreshToken = this.refreshTokenPayload = this.idToken = this.idTokenPayload = this.accessToken = this.accessTokenPayload = null;
 };
 Keyclops.prototype.set = function(accessToken, refreshToken, idToken) {
@@ -180,18 +185,18 @@ Keyclops.prototype.getOAuthParams = function(url) {
 		return oauth;
 	}
 	let oauthStateStored = JSON.parse(sessionStorage.getItem("kc"));
-	console.log("[KEYCLOPS] getOAuthParams stored oauthState", oauthStateStored);
+	this.log("[KEYCLOPS] getOAuthParams stored oauthState", oauthStateStored);
 	sessionStorage.removeItem("kc");
 	const oauthStateParsed = parseOAuth(url);
 	if (!oauthStateStored) {
 		oauthStateStored = { redirectUrl: oauthStateParsed.newUrl };
-		console.log("[KEYCLOPS] getOAuthParams deduced oauthState", oauthStateStored);
+		this.log("[KEYCLOPS] getOAuthParams deduced oauthState", oauthStateStored);
 	}
 	return Object.assign(oauthStateParsed, oauthStateStored);
 };
 
 Keyclops.prototype.setupSSOIframe = function() {
-	console.log("[KEYCLOPS] setupSSOIframe", this.sso.enable);
+	this.log("[KEYCLOPS] setupSSOIframe", this.sso.enable);
 	if (!this.sso.enable || this.sso.iframe) return Promise.resolve();
 
 	return new Promise(resolve => {
@@ -200,7 +205,7 @@ Keyclops.prototype.setupSSOIframe = function() {
 		this.sso.iframe = iframe;
 		iframe.onload = () => {
 			const authUrl = this.endpoints.authorize;
-			console.log("[KEYCLOPS] iframe onload authUrl", authUrl);
+			this.log("[KEYCLOPS] iframe onload authUrl", authUrl);
 			// TODO: externalize getOrigin
 			const origin = location.origin || `${location.protocol}//${location.host}`;
 			this.sso.origin = authUrl.charAt(0) === "/" ? origin : authUrl.substring(0, authUrl.indexOf("/", 8));
