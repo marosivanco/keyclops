@@ -8,10 +8,7 @@
 </template>
 
 <script>
-import Axios from "./axios";
 import store from "./store";
-
-store.$axios = Axios;
 
 export default {
 	name: "test",

@@ -1,9 +1,4 @@
 /*eslint-disable no-console */
-import axios from "axios";
-const Axios = axios.create({
-	timeout: 15000,
-	withCredentials: true,
-});
 function decodePayload(token) {
 	function toUtf8Char(str) {
 		try {
@@ -70,12 +65,19 @@ Keyclops.prototype.update = function() {
 	console.log("[KEYCLOPS] update");
 	if (!this.refreshToken) return Promise.reject();
 
-	return Axios.post(
-		this.endpoints.token,
-		`grant_type=refresh_token&refresh_token=${this.refreshToken}&client_id=${euc(this.clientId)}`,
-		{ headers: { "Content-type": "application/x-www-form-urlencoded" } },
-	)
-		.then(({ data }) => {
+	return fetch(this.endpoints.token, {
+		method: "POST",
+		credentials: "include",
+		headers: { "Content-type": "application/x-www-form-urlencoded" },
+		body: `grant_type=refresh_token&refresh_token=${this.refreshToken}&client_id=${euc(this.clientId)}`,
+	})
+		.then(response => {
+			if (response.ok) {
+				return response.json();
+			}
+			throw response;
+		})
+		.then(data => {
 			console.info("[KEYCLOPS] Tokens refreshed.");
 			this.set(data.access_token, data.refresh_token, data.id_token);
 			return data;
@@ -108,12 +110,21 @@ Keyclops.prototype.processOAuthParams = function({ code, error, error_descriptio
 		ret = Promise.reject({ error, error_description });
 	} else {
 		console.log("[KEYCLOPS] processOAuthParams continuation");
-		ret = Axios.post(
-			this.endpoints.token,
-			`code=${code}&grant_type=authorization_code&client_id=${euc(this.clientId)}&redirect_uri=${euc(redirectUrl)}`,
-			{ headers: { "Content-Type": "application/x-www-form-urlencoded" } },
-		)
-			.then(({ data }) => {
+		ret = fetch(this.endpoints.token, {
+			method: "POST",
+			credentials: "include",
+			headers: { "Content-Type": "application/x-www-form-urlencoded" },
+			body: `code=${code}&grant_type=authorization_code&client_id=${euc(this.clientId)}&redirect_uri=${euc(
+				redirectUrl,
+			)}`,
+		})
+			.then(response => {
+				if (response.ok) {
+					return response.json();
+				}
+				throw response;
+			})
+			.then(data => {
 				console.log("[KEYCLOPS] processOAuthParams POST then", data);
 				this.set(data.access_token, data.refresh_token, data.id_token);
 				if (
@@ -128,9 +139,9 @@ Keyclops.prototype.processOAuthParams = function({ code, error, error_descriptio
 				}
 				return data;
 			})
-			.catch(res => {
-				console.log("[KEYCLOPS] processOAuthParams POST catch", res.code, JSON.stringify(res.response.data, null, 4));
-				throw res;
+			.catch(response => {
+				console.log("[KEYCLOPS] processOAuthParams POST catch", response);
+				throw response;
 			});
 	}
 	return ret;
