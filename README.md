@@ -684,7 +684,7 @@ In browser, go to www.example.org. You should be redirected to accounts.example.
 Log in. You should be redirected back to the application, but this time you should see the protected page:
 ![Keyclops Test App](./doc/test-app.png)
 
-## 5.3. Inside the Test App
+## 5.3. Inside the Demo App
 
 The following chapters describe the key aspects of the test application.
 

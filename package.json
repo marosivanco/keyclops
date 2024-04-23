@@ -16,27 +16,10 @@
 		"type": "git",
 		"url": "https://github.com/marosivanco/keyclops.git"
 	},
-	"scripts": {
-		"serve": "vue-cli-service serve",
-		"prebuild": "node ./node_modules/rimraf/bin.js ./node_modules/.cache",
-		"build": "vue-cli-service build --modern",
-		"lint": "vue-cli-service lint"
-	},
 	"main": "src",
 	"dependencies": {},
 	"devDependencies": {
-		"@vue/cli-plugin-babel": "3.3.0",
-		"@vue/cli-plugin-eslint": "3.9.2",
-		"@vue/cli-service": "3.9.2",
-		"@vue/eslint-config-prettier": "4.0.1",
-		"compression-webpack-plugin": "2.0.0",
-		"core-js": "2.6.9",
-		"prettier": "1.18.2",
-		"rimraf": "2.6.3",
-		"uglify-es": "3.3.9",
-		"vue": "2.6.10",
-		"vue-template-compiler": "2.6.10",
-		"vuex": "3.1.1"
+		"prettier": "1.18.2"
 	},
 	"engines": {
 		"node": ">= 10.0.0",

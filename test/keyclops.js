@@ -1,1 +1,0 @@
-window.cloak("internal", "sales");
