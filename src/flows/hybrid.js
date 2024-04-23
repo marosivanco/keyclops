@@ -161,6 +161,7 @@ Keyclops.prototype.getOAuthParams = function(url) {
 			"error_description",
 			"error_uri",
 			"id_token",
+			"iss",
 			"session_state",
 			"state",
 		];
