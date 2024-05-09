@@ -14,7 +14,7 @@
 	"license": "Apache-2.0",
 	"repository": {
 		"type": "git",
-		"url": "https://github.com/marosivanco/keyclops.git"
+		"url": "git+https://github.com/marosivanco/keyclops.git"
 	},
 	"main": "src",
 	"dependencies": {},
