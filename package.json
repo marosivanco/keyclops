@@ -1,6 +1,6 @@
 {
 	"name": "keyclops",
-	"version": "1.6.1",
+	"version": "1.6.2",
 	"description": "Responsive JS client for Keycloak.",
 	"keywords": [
 		"authentication",
