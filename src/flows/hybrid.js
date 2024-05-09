@@ -160,10 +160,12 @@ Keyclops.prototype.getOAuthParams = function(url) {
 			"error",
 			"error_description",
 			"error_uri",
+			"expires_in",
 			"id_token",
 			"iss",
 			"session_state",
 			"state",
+			"token_type"
 		];
 		const oauth = { continue: false };
 		const idx = url.indexOf("#");
